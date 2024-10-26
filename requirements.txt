@@ -1,0 +1,6 @@
+confluent-kafka
+requests
+elasticsearch
+kafka-python
+python-dotenv
+azure-storage-file-datalake

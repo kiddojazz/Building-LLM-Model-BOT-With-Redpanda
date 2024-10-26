@@ -1,0 +1,51 @@
+curl -X PUT -x "" "http://localhost:9200/redpanda_index" -H "Content-Type: application/json" -d'
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "id": {"type": "keyword"},
+      "type": {"type": "keyword"},
+      "namespace": {"type": "integer"},
+      "title": {"type": "text"},
+      "title_url": {"type": "keyword"},
+      "comment": {"type": "text"},
+      "timestamp": {"type": "date"},
+      "user": {"type": "keyword"},
+      "bot": {"type": "boolean"},
+      "notify_url": {"type": "keyword"}
+    }
+  }
+}'
+
+
+
+
+GET /redpanda_index/_search?pretty
+{
+
+  "query": {
+
+    "match_all": {}
+
+  },        
+
+  "size": 10
+
+}
+
+
+
+
+GET /redpanda_index/_count
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+or 
+
+GET /redpanda_index/_count
